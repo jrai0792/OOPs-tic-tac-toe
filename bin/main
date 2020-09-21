@@ -1,2 +1,19 @@
 #!/usr/bin/env ruby
-puts 'Hello world!'
+
+# select game option method
+puts 'Welcome to Tic-Tac-Toe game! Please select your option'
+puts '1 - Play'
+puts '2 - Exit'
+option = gets.chomp.to_i
+puts option
+# select option method ends here
+
+if option == 2
+  puts 'Thank you! See you soon!!'
+elsif option == 1
+  puts 'Welcome!! Your match will start soon..'
+  # will call game start method here
+else
+  puts 'Invalid option. Please enter the correct option.'
+  # will call the game option method
+end
