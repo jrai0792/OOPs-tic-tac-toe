@@ -1,2 +1,66 @@
 #!/usr/bin/env ruby
-puts 'Hello world!'
+
+# select game option method
+puts 'Welcome to Tic-Tac-Toe game! Please select your option'
+puts '1 - Play'
+puts '2 - Exit'
+option = gets.chomp.to_i
+puts option
+# select option method ends here
+
+if option == 2
+  puts 'Thank you! See you soon!!'
+elsif option == 1
+  puts 'Welcome!! Your match will start soon..'
+  # will call game start method here
+else
+  puts 'Invalid option. Please enter the correct option.'
+  # will call the game option method
+end
+
+# call game start method
+2.times do
+  # On each iteration an instance of class player will be created
+  # The players will be automatically assigned the keys
+  # X for player and O for player2
+  puts 'Enter your name'
+  name = gets.chomp
+  puts name
+end
+
+# A gameboard will be displayed and players will take turns entering their options
+# method for player turn will be called here, which will return the player name whose turn will be.
+puts 'Enter the position'
+position = gets.chomp
+puts position
+# check the input position is already taken. If taken, display message and take the input again.
+
+# If the entered position is invalid or out of the range of the array values
+# then message for the same will be displayed
+# The input will be asked again.
+
+# If not, then save the input and update the position value in the gameboard.
+
+# So, the gameboard after each move will be updated
+# The gameboard will display the available position with the respective numeric value.
+
+# with each input, the positions will be saved to a player's moves array
+
+# after the third input of each player, the program will start comparing the users input with the winning combination
+
+# if 3 of the player's moves combination matches the winning combination
+puts "That's a winning move"
+# if the gameboard is full and there is no win yet
+puts "That's a draw"
+
+# These actions will be repeated to all players
+
+# tie method to check if the match is tie.
+# Replay option method after tie or game win.
+puts 'Want to play again?'
+puts 'Yes'
+puts 'No'
+
+reply = gets.chomp
+# Start game method call if Yes else exit the game.
+puts reply
