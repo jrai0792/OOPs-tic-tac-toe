@@ -29,13 +29,17 @@ end
 end
 
 # A gameboard will be displayed and players will take turns entering their options
+# method for player turn will be called here, which will return the player name whose turn will be.
 puts 'Enter the position'
 position = gets.chomp
 puts position
 # check the input position is already taken. If taken, display message and take the input again.
-# If not, then save the input and update the position value in the gameboard.
+# If the entered position is invalid or out of the range of the array values, then message for the same will be displayed and again input will be asked.
+# If not, then save the input and update the position value in the gameboard. 
+# So, the gameboard after each move will be updated and will display the available position with the respective numeric value.
 # with each input, the positions will be saved to a player's moves array
 # after the third input of each player, the program will start comparing the users input with the winning combination
+
 
 # tie method to check if the match is tie.
 # Replay option method after tie or game win.
