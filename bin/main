@@ -18,17 +18,31 @@ else
   # will call the game option method
 end
 
-#call game start method
-2.times do 
-    #On each iteration an instance of class player will be created
-    #The players will be automatically assigned the keys
-    #X for player and O for player2
-    puts "Enter your name"
-    name=gets.chomp()
+# call game start method
+2.times do
+  # On each iteration an instance of class player will be created
+  # The players will be automatically assigned the keys
+  # X for player and O for player2
+  puts 'Enter your name'
+  name = gets.chomp
+  puts name
 end
 
-#A gameboard will be displayed and players will take turns entering their options
-puts "Enter the position"
-position=gets.chomp()
-#with each input, the positions will be saved to a player's moves array
-#after the third input of each player, the program will start comparing the users input with the winning combination
+# A gameboard will be displayed and players will take turns entering their options
+puts 'Enter the position'
+position = gets.chomp
+puts position
+# check the input position is already taken. If taken, display message and take the input again.
+# If not, then save the input and update the position value in the gameboard.
+# with each input, the positions will be saved to a player's moves array
+# after the third input of each player, the program will start comparing the users input with the winning combination
+
+# tie method to check if the match is tie.
+# Replay option method after tie or game win.
+puts 'Want to play again?'
+puts 'Yes'
+puts 'No'
+
+reply = gets.chomp
+# Start game method call if Yes else exit the game.
+puts reply
