@@ -7,6 +7,8 @@
 
 In the first milestone, we have done the project setup with Linters and as per the requirement.
 
+In the second milestone, We specified how the game project flow will look like from the start to the end.
+
 ## Authors
 
 👤 **Jyoti Rai**
