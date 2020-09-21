@@ -34,12 +34,26 @@ puts 'Enter the position'
 position = gets.chomp
 puts position
 # check the input position is already taken. If taken, display message and take the input again.
-# If the entered position is invalid or out of the range of the array values, then message for the same will be displayed and again input will be asked.
-# If not, then save the input and update the position value in the gameboard. 
-# So, the gameboard after each move will be updated and will display the available position with the respective numeric value.
+
+# If the entered position is invalid or out of the range of the array values
+# then message for the same will be displayed
+# The input will be asked again.
+
+# If not, then save the input and update the position value in the gameboard.
+
+# So, the gameboard after each move will be updated
+# The gameboard will display the available position with the respective numeric value.
+
 # with each input, the positions will be saved to a player's moves array
+
 # after the third input of each player, the program will start comparing the users input with the winning combination
 
+# if 3 of the player's moves combination matches the winning combination
+puts "That's a winning move"
+# if the gameboard is full and there is no win yet
+puts "That's a draw"
+
+# These actions will be repeated to all players
 
 # tie method to check if the match is tie.
 # Replay option method after tie or game win.
