@@ -131,8 +131,12 @@ class Game
       end
       @player1.array.push(position)
       gameboard
-      win(@player1.name) if check_win(@@winning_combo, @player1.array)
+      if check_win?(@@winning_combo, @player1.array)
+        return win(@player1.name)
+        break
+      end
       i+=1
+      break if i >=9
       loop do 
         puts 'Player2 please enter the position for your key.'
         position = gets.chomp().to_i
@@ -140,13 +144,17 @@ class Game
       end
       @player2.array.push(position)
       gameboard
-      win(@player1.name) if check_win(@@winning_combo, @player1.array)
+      if check_win?(@@winning_combo, @player2.array)
+        return win(@player2.name)
+        break
+      end
       i+=1
+      break if i >=9
     end
-    tie
+    puts tie
   end
 
-  def check_win(y, t)
+  def check_win?(y, t)
     y.length.times do |item|
         return true if y[item].all?{|x| t.include?(x)}
     end
@@ -154,7 +162,7 @@ class Game
   end
 
   def win(p)
-    "#{p} won"
+    puts "#{p} won"
   end
 
   def tie
