@@ -90,12 +90,24 @@ class Game
       break if name != "" && name != " "
     end
     @player1.name = name
+    puts "#{@player1.name} your key is #{@player1.key}"
     loop do
       puts 'Enter your name Player2.'
       name = gets.chomp()
       break if name != "" && name != " "
     end
     @player2.name = name
+    puts "#{@player2.name} your key is #{@player2.key}"
+    puts "Here is the game board"
+    gameboard()
+  end
+
+  def gameboard
+    9.times do
+      print " #{i+1} | " if i%3!=2
+       puts " #{i+1} "
+       puts "------------"
+    end
   end
 end
 
@@ -103,3 +115,4 @@ game = Game.new()
 game.info
 puts game.player1.name
 puts game.player2.name
+
