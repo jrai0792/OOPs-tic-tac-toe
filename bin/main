@@ -111,26 +111,33 @@ class Game
   end
 
   def gameStart
-    puts 'Player1 please enter the position for your key.'
-    position = gets.chomp().to_i
-    positionCheck(position,@player1.key)
+    loop do 
+      puts 'Player1 please enter the position for your key.'
+      position = gets.chomp().to_i
+      break if positionCheck(position,@player1.key)
+    end
     gameboard
-    puts 'Player2 please enter the position for your key.'
-    position = gets.chomp().to_i
-    positionCheck(position, @player2.key)
+    loop do 
+      puts 'Player2 please enter the position for your key.'
+      position = gets.chomp().to_i
+      break if positionCheck(position,@player2.key)
+    end
     gameboard
   end
 
   def positionCheck(pos, key)
     case pos
     when 1..9
-      puts 'valid'
       if @gameArray[pos-1].is_a?(Integer)
         @gameArray[pos-1] = key
+        return true
+      else
+        puts "Position already taken. Please choose different position."
+        return false
       end
     else
-      puts 'Invalid'
-      gameStart
+      puts "Invalid position. Please choose again."
+      return false
     end
   end
   
