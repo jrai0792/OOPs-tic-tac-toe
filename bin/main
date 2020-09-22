@@ -66,21 +66,40 @@
 # puts reply
 
 class Player
-  attr_accessor :name, :key, :combo
+  attr_accessor :name, :key, :array
   def initialize(name, key)
     @name=name
     @key=key
+    @array = []
   end
 end
 
 class Game
   attr_accessor :player1, :player2
-  def initialize(name1, name2)
-    @player1=Player.new(name1, "X")
-    @player2=Player.new(name2, "O")
+  def initialize
+    @player1 = Player.new("","X")
+    @player2 =Player.new("", "O")
+  end
+
+  def info
+    name =""
+    puts 'Welcome to Tic-Tac-Toe Game!!'
+    loop do
+      puts 'Enter your name Player1.'
+      name = gets.chomp()
+      break if name != "" && name != " "
+    end
+    @player1.name = name
+    loop do
+      puts 'Enter your name Player2.'
+      name = gets.chomp()
+      break if name != "" && name != " "
+    end
+    @player2.name = name
   end
 end
 
-game=Game.new("Ntwali", "Jyoti")
-
-puts game.player1
+game = Game.new()
+game.info
+puts game.player1.name
+puts game.player2.name
