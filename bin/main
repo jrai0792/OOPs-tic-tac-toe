@@ -10,7 +10,7 @@ class Player
 end
 
 class Game
-  @@winning_combo = [
+  WINNING_COMBO = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9],
@@ -19,7 +19,7 @@ class Game
     [3, 6, 9],
     [1, 5, 9],
     [3, 5, 7]
-  ]
+  ].freeze
   attr_accessor :player1, :player2, :game_array
   def initialize
     @player1 = Player.new('', 'X')
@@ -32,18 +32,18 @@ class Game
     puts 'Welcome to Tic-Tac-Toe Game!!'
     loop do
       puts 'Player1 enter your name.'
-      name = gets.chomp
+      name = gets.chomp.capitalize
       break if name != '' && name != ' '
     end
     @player1.name = name
-    puts "#{@player1.name} your key for the game is #{@player1.key}"
+    puts "Hi, #{@player1.name} your key for the game is #{@player1.key}"
     loop do
       puts 'Player2 enter your name.'
-      name = gets.chomp
+      name = gets.chomp.capitalize
       break if name != '' && name != ' '
     end
     @player2.name = name
-    puts "#{@player2.name} your key for the game is #{@player2.key}"
+    puts "Hi, #{@player2.name} your key for the game is #{@player2.key}"
     puts 'Here is the game board'
     gameboard
   end
@@ -55,41 +55,29 @@ class Game
     end
   end
 
-  def move(player_name, pos)
+  def move(player_name, pos1)
     loop do
       puts "Hi, #{player_name.name} please enter the position for your key."
-      pos = gets.chomp.to_i
-      break if position_check(pos, player_name.key)
+      pos1 = gets.chomp.to_i
+      break if position_check(pos1, player_name.key)
     end
-    player_name.array.push(pos)
-    gameboard
-    return win(player_name.name) if check_win?(@@winning_combo, player_name.array)
+    player_name.array.push(pos1)
   end
 
   def game_start
     position = 0
     i = 0
     while i < 9
-      loop do
-        puts "Hi, #{@player1.name} please enter the position for your key."
-        position = gets.chomp.to_i
-        break if position_check(position, @player1.key)
-      end
-      @player1.array.push(position)
+      move(@player1, position)
       gameboard
-      return win(@player1.name) if check_win?(@@winning_combo, @player1.array)
+      return win(@player1.name) if check_win?(WINNING_COMBO, @player1.array)
 
       i += 1
       break if i >= 9
 
-      loop do
-        puts "Hi, #{@player2.name} please enter the position for your key."
-        position = gets.chomp.to_i
-        break if position_check(position, @player2.key)
-      end
-      @player2.array.push(position)
+      move(@player2, position)
       gameboard
-      return win(@player2.name) if check_win?(@@winning_combo, @player2.array)
+      return win(@player2.name) if check_win?(WINNING_COMBO, @player2.array)
 
       i += 1
       break if i >= 9
