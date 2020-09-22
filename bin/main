@@ -75,6 +75,16 @@ class Player
 end
 
 class Game
+  @@winning_combo = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9],
+    [1,4,7],
+    [2,5,8],
+    [3,6,9],
+    [1,5,9],
+    [3,5,9]
+    ]
   attr_accessor :player1, :player2, :gameArray
   def initialize
     @player1 = Player.new("","X")
@@ -111,18 +121,44 @@ class Game
   end
 
   def gameStart
-    loop do 
-      puts 'Player1 please enter the position for your key.'
-      position = gets.chomp().to_i
-      break if positionCheck(position,@player1.key)
+    position=0
+    i=0
+    while i<9 do
+      loop do 
+        puts 'Player1 please enter the position for your key.'
+        position = gets.chomp().to_i
+        break if positionCheck(position,@player1.key)
+      end
+      @player1.array.push(position)
+      gameboard
+      win(@player1.name) if check_win(@@winning_combo, @player1.array)
+      i+=1
+      loop do 
+        puts 'Player2 please enter the position for your key.'
+        position = gets.chomp().to_i
+        break if positionCheck(position,@player2.key)
+      end
+      @player2.array.push(position)
+      gameboard
+      win(@player1.name) if check_win(@@winning_combo, @player1.array)
+      i+=1
     end
-    gameboard
-    loop do 
-      puts 'Player2 please enter the position for your key.'
-      position = gets.chomp().to_i
-      break if positionCheck(position,@player2.key)
+    tie
+  end
+
+  def check_win(y, t)
+    y.length.times do |item|
+        return true if y[item].all?{|x| t.include?(x)}
     end
-    gameboard
+    return false
+  end
+
+  def win(p)
+    "#{p} won"
+  end
+
+  def tie
+    return "tie"
   end
 
   def positionCheck(pos, key)
