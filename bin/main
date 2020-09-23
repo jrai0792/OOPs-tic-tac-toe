@@ -3,8 +3,8 @@ require './lib/player.rb'
 require './lib/game.rb'
 
 game = Game.new
-k = game.game_array
-def info(args,args1)
+one = game.game_array
+def info(args, args1)
   name = ''
   puts 'Welcome to Tic-Tac-Toe Game!!'
   loop do
@@ -25,10 +25,10 @@ def info(args,args1)
   gameboard(args1)
 end
 
-def gameboard(k)
+def gameboard(one)
   9.times do |i|
-    print " #{k[i]} | " if i % 3 != 2
-    puts " #{k[i]} " if i % 3 == 2
+    print " #{one[i]} | " if i % 3 != 2
+    puts " #{one[i]} " if i % 3 == 2
   end
 end
 
@@ -65,9 +65,5 @@ def position_check(pos, key)
   end
 end
 
-# game = Game.new
-# game.info
-# game.game_start
-puts game.player1.name
-info(game,k)
+info(game, one)
 game.game_start
