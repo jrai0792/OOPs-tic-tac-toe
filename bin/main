@@ -1,14 +1,5 @@
 #!/usr/bin/env ruby
-
-class Player
-  attr_accessor :name, :key, :array
-  def initialize(name, key)
-    @name = name
-    @key = key
-    @array = []
-  end
-end
-
+require ./lib/player.rb
 class Game
   WINNING_COMBO = [
     [1, 2, 3],
@@ -20,7 +11,7 @@ class Game
     [1, 5, 9],
     [3, 5, 7]
   ].freeze
-  attr_accessor :player1, :player2, :game_array
+  attr_reader :player1, :player2, :game_array
   def initialize
     @player1 = Player.new('', 'X')
     @player2 = Player.new('', 'O')
