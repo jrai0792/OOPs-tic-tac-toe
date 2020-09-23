@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require ./lib/player.rb
+require './lib/player.rb'
 class Game
   WINNING_COMBO = [
     [1, 2, 3],
