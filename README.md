@@ -2,15 +2,21 @@
 
 # OOPs-tic-tac-toe
 
-> In this project, we are building a Tic Tac Toe game. The main goal is to put into practice the main concepts of Object Oriented Programming. Particularly, classes and access to their attributes.
+> In this project, we're required to create a Tic Tac Toe Game using Ruby with OOP concepts.
 
+This project is split into 4 milestones, which are:
 
-In the first milestone, we have done the project setup with Linters and as per the requirement.
+Setting up the project
+Designing the user interface
+Creating the game logic
+Writing the game instructions
 
-In the second milestone, We specified how the game project flow will look like from the start to the end.
+The main goal of this project is to ensure the mastery of the methods ruby provides and to learn how to replicate them using basic coding knowledge.
 
-In the third milestone, we have added the real game logic. Added Game and Player class.
-Improved play I/O.
+Below is a basic demonstration of how the tic tac toe game works
+
+![screenshot](./assets/gif.gif)
+
 
 ## Authors
 
