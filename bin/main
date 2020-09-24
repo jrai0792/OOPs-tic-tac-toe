@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
-require './lib/player.rb'
-require './lib/game.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/game.rb'
 
 game = Game.new
 gameboard_obj = game.game_array
-def info(game_object, gameArray)
+def info(game_object, gamearray)
   name = ''
   puts 'Welcome to Tic-Tac-Toe Game!!'
   loop do
@@ -22,7 +22,7 @@ def info(game_object, gameArray)
   game_object.player2.name = name
   puts "Hi, #{game_object.player2.name} your key for the game is #{game_object.player2.key}"
   puts 'Here is the game board'
-  gameboard(gameArray)
+  gameboard(gamearray)
 end
 
 def gameboard(gameboard_obj)
