@@ -9,6 +9,9 @@ In the first milestone, we have done the project setup with Linters and as per t
 
 In the second milestone, We specified how the game project flow will look like from the start to the end.
 
+In the third milestone, we have added the real game logic. Added Game and Player class.
+Improved play I/O.
+
 ## Authors
 
 👤 **Jyoti Rai**

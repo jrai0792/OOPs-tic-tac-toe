@@ -1,66 +1,69 @@
 #!/usr/bin/env ruby
+require_relative '../lib/player.rb'
+require_relative '../lib/game.rb'
 
-# select game option method
-puts 'Welcome to Tic-Tac-Toe game! Please select your option'
-puts '1 - Play'
-puts '2 - Exit'
-option = gets.chomp.to_i
-puts option
-# select option method ends here
-
-if option == 2
-  puts 'Thank you! See you soon!!'
-elsif option == 1
-  puts 'Welcome!! Your match will start soon..'
-  # will call game start method here
-else
-  puts 'Invalid option. Please enter the correct option.'
-  # will call the game option method
+game = Game.new
+gameboard_obj = game.game_array
+def info(game_object, gamearray)
+  name = ''
+  puts 'Welcome to Tic-Tac-Toe Game!!'
+  loop do
+    puts 'Player1 enter your name.'
+    name = gets.chomp.capitalize
+    break if name != '' && name != ' '
+  end
+  game_object.player1.name = name
+  puts "Hi, #{game_object.player1.name} your key for the game is #{game_object.player1.key}"
+  loop do
+    puts 'Player2 enter your name.'
+    name = gets.chomp.capitalize
+    break if name != '' && name != ' '
+  end
+  game_object.player2.name = name
+  puts "Hi, #{game_object.player2.name} your key for the game is #{game_object.player2.key}"
+  puts 'Here is the game board'
+  gameboard(gamearray)
 end
 
-# call game start method
-2.times do
-  # On each iteration an instance of class player will be created
-  # The players will be automatically assigned the keys
-  # X for player and O for player2
-  puts 'Enter your name'
-  name = gets.chomp
-  puts name
+def gameboard(gameboard_obj)
+  9.times do |i|
+    print " #{gameboard_obj[i]} | " if i % 3 != 2
+    puts " #{gameboard_obj[i]} " if i % 3 == 2
+  end
 end
 
-# A gameboard will be displayed and players will take turns entering their options
-# method for player turn will be called here, which will return the player name whose turn will be.
-puts 'Enter the position'
-position = gets.chomp
-puts position
-# check the input position is already taken. If taken, display message and take the input again.
+def move(player_name, pos1)
+  loop do
+    puts "Hi, #{player_name.name} please enter the position for your key."
+    pos1 = gets.chomp.to_i
+    break if position_check(pos1, player_name.key)
+  end
+  player_name.array.push(pos1)
+end
 
-# If the entered position is invalid or out of the range of the array values
-# then message for the same will be displayed
-# The input will be asked again.
+def win(player)
+  puts "Yay..!!#{player} won."
+end
 
-# If not, then save the input and update the position value in the gameboard.
+def tie
+  puts "It's draw match!!"
+end
 
-# So, the gameboard after each move will be updated
-# The gameboard will display the available position with the respective numeric value.
+def position_check(pos, key)
+  case pos
+  when 1..9
+    if @game_array[pos - 1].is_a?(Integer)
+      @game_array[pos - 1] = key
+      true
+    else
+      puts 'Position already taken. Please choose different position.'
+      false
+    end
+  else
+    puts 'Invalid position. Please choose again.'
+    false
+  end
+end
 
-# with each input, the positions will be saved to a player's moves array
-
-# after the third input of each player, the program will start comparing the users input with the winning combination
-
-# if 3 of the player's moves combination matches the winning combination
-puts "That's a winning move"
-# if the gameboard is full and there is no win yet
-puts "That's a draw"
-
-# These actions will be repeated to all players
-
-# tie method to check if the match is tie.
-# Replay option method after tie or game win.
-puts 'Want to play again?'
-puts 'Yes'
-puts 'No'
-
-reply = gets.chomp
-# Start game method call if Yes else exit the game.
-puts reply
+info(game, gameboard_obj)
+game.game_start
