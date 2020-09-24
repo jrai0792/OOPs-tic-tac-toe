@@ -3,8 +3,8 @@ require './lib/player.rb'
 require './lib/game.rb'
 
 game = Game.new
-one = game.game_array
-def info(args, args1)
+gameboard_obj = game.game_array
+def info(game_object, gameArray)
   name = ''
   puts 'Welcome to Tic-Tac-Toe Game!!'
   loop do
@@ -12,23 +12,23 @@ def info(args, args1)
     name = gets.chomp.capitalize
     break if name != '' && name != ' '
   end
-  args.player1.name = name
-  puts "Hi, #{args.player1.name} your key for the game is #{args.player1.key}"
+  game_object.player1.name = name
+  puts "Hi, #{game_object.player1.name} your key for the game is #{game_object.player1.key}"
   loop do
     puts 'Player2 enter your name.'
     name = gets.chomp.capitalize
     break if name != '' && name != ' '
   end
-  args.player2.name = name
-  puts "Hi, #{args.player2.name} your key for the game is #{args.player2.key}"
+  game_object.player2.name = name
+  puts "Hi, #{game_object.player2.name} your key for the game is #{game_object.player2.key}"
   puts 'Here is the game board'
-  gameboard(args1)
+  gameboard(gameArray)
 end
 
-def gameboard(one)
+def gameboard(gameboard_obj)
   9.times do |i|
-    print " #{one[i]} | " if i % 3 != 2
-    puts " #{one[i]} " if i % 3 == 2
+    print " #{gameboard_obj[i]} | " if i % 3 != 2
+    puts " #{gameboard_obj[i]} " if i % 3 == 2
   end
 end
 
@@ -65,5 +65,5 @@ def position_check(pos, key)
   end
 end
 
-info(game, one)
+info(game, gameboard_obj)
 game.game_start
